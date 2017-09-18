@@ -3,14 +3,20 @@ require 'twilio-ruby'
 class SendCode
 
   def initialize
-    account_sid = Rails.application.secrets.account_sid
-     auth_token = Rails.application.secrets.auth_token
-     @client = Twilio::REST::Client.new account_sid, auth_token
-     @t_phone = Rails.application.secrets.t_phone
+    account = ENV['TWILIO_ACCOUNT_SID']
+    token = ENV['TWILIO_AUTH_TOKEN']
+    @twilio_phone = ENV['TWILIO_PHONE']
+    @client = Twilio::REST::Client.new(account, token)
   end
 
-  def send_sms(options = {})
-     @client.account.sms.messages.create(options.merge!({:from => @t_phone}))
+  def send_sms(recipient, message)
+     message = @client.api.account.messages.create(
+       from: @twilio_phone,
+       to: recipient,
+       body: message,
+       )
+
+     puts message.to
   end
 
 
