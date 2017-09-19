@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   end
 
   def authenticate(code, drift)
-    return self.authenticate_otp(code, drift: drift)
+    self.authenticate_otp(code, drift: drift)
   end
 end
