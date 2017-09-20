@@ -9,12 +9,16 @@ class Api::V1::AuthController < ApplicationController
   end
 
   def create
-    user = User.find_or_create_by(mobile: params[:mobile])
-    render json: {
-      id: user.id,
-      mobile: user.mobile,
-      jwt: JWT.encode({user_id: user.id}, ENV['JWT_SECRET'], ENV['JWT_ALGORITHM'])
-    }
+    user = User.find(params[:userId])
+    if user.authenticate(params[:code], 3000)
+      render json: {
+        id: user.id,
+        jwt: JWT.encode({user_id: user.id}, ENV['JWT_SECRET'], ENV['JWT_ALGORITHM'])
+      }
+    else
+      render json: {
+        error: 'Your code tastes bad !'
+      }, status: 404
+    end
   end
-
 end
