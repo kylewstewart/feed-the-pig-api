@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
   def decode_token
     if token
       begin
-        JWT.decode(token, ENV['JWT_SECRET'], true, {algorithm: false})
+        JWT.decode(token, nil, false)
       rescue JWT::DecodeError
         return [{}]
       end
