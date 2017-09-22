@@ -10,13 +10,14 @@ class Api::V1::AuthController < ApplicationController
   def create
     user = User.find(params[:userId])
     if user.authenticate(params[:code], 300)
+      jwt = JWT.encode({user_id: user.id}, ENV['JWT_SECRET'], ENV['JWT_ALGORITHM'])
       render json: {
         id: user.id,
-        token: JWT.encode({user_id: user.id}, ENV['JWT_SECRET'], ENV['JWT_ALGORITHM'])
+        token: jwt,
       }
     else
       render json: {
-        error: 'Your code tastes bad !'
+        error: 'Bad Code'
       }, status: 404
     end
   end
