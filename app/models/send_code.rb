@@ -16,7 +16,8 @@ class SendCode
        body: message,
        )
 
-     puts message.to
+   puts message.to
+
   end
 
 
