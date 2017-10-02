@@ -1,7 +1,6 @@
 class Api::V1::GoalsController < ApplicationController
 
   def index
-    binding.pry
     goals = Goal.all
     render json: goals
   end

@@ -7,7 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Goal.create(
   name: "Vacation",
-  ammount: 20000,
-  date: "03/31/18",
+  amount: 20000,
+  date: Date.new(2020, 3, 1),
+  rate: 0.05
+)
+
+Goal.create(
+  name: "New Car",
+  amount: 35000,
+  date: Date.new(2019, 6, 1),
   rate: 0.05
 )
