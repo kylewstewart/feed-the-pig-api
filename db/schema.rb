@@ -17,9 +17,10 @@ ActiveRecord::Schema.define(version: 20170929162530) do
 
   create_table "goals", force: :cascade do |t|
     t.string "name"
-    t.integer "amount"
+    t.float "amount"
     t.date "date"
     t.float "rate"
+    t.float "saved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
