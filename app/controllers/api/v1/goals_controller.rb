@@ -10,7 +10,9 @@ class Api::V1::GoalsController < ApplicationController
   end
 
   def create
-    # creates a new row in the users table
+    binding.pry
+    goal = Goal.create(goal_params)
+    render json: goal  
   end
 
   def show
@@ -29,5 +31,10 @@ class Api::V1::GoalsController < ApplicationController
     # deletes an existing row
   end
 
+  private
+
+  def goal_params
+    params.require(:goal).permit(:id, :name, :amount, :date, :saved, :rate)
+  end
 
 end

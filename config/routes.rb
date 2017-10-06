@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       post '/auth', to: 'auth#create'
       get '/current_user', to: 'auth#show'
       resources :users, only: [:create]
-      resources :goals, only: [:index]
+      resources :goals, only: [:index, :create]
     end
   end
 end
