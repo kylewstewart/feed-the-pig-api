@@ -7,10 +7,6 @@ class GoalSerializer < ActiveModel::Serializer
     number_to_currency(object.amount)
   end
 
-  def date
-    object.date.strftime("%m/%d/%y")
-  end
-
   def rate
     number_to_percentage(object.rate * 100, precision: 2)
   end
