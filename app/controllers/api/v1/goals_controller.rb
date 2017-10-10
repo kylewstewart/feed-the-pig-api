@@ -10,9 +10,8 @@ class Api::V1::GoalsController < ApplicationController
   end
 
   def create
-    binding.pry
     goal = Goal.create(goal_params)
-    render json: goal  
+    render json: goal
   end
 
   def show
