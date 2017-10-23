@@ -10,7 +10,6 @@ class Api::V1::GoalsController < ApplicationController
   end
 
   def create
-    binding.pry
     goal = Goal.create(goal_params)
   end
 
