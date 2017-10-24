@@ -28,7 +28,9 @@ class Api::V1::GoalsController < ApplicationController
   end
 
   def destroy
-    # deletes an existing row
+    goal = Goal.find(params[:id])
+    goal.destroy
+    render json: goal  
   end
 
   private
