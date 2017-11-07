@@ -6,7 +6,7 @@ class Api::V1::UsersController < ApplicationController
       user.send_auth_code
       response = {id: user.id}
     rescue
-      response = {error: "that mobile number taste bad"}
+      response = {error: "i can't send a code to that mobile"}
     end
 
     render json: response
